@@ -20,7 +20,7 @@ async function predictClassification(model, image) {
             suggestion = "Segera periksa ke dokter"
         }else  {
             label = "Non-cancer"
-            suggestion = "AMAN, SEGERA MABAR"
+            suggestion = "Tidak terdeksi adanya kanker"
         }
 
         return { label, suggestion }
