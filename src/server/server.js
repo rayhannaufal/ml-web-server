@@ -29,7 +29,6 @@ const init = async () => {
             const newResponse = h.response({
                 status: 'fail',
                 message: response.message
-                // message: `${response.message} Silakan gunakan foto lain.`
             })
             newResponse.code(response.statusCode)
             return newResponse;
@@ -39,7 +38,6 @@ const init = async () => {
             const newResponse = h.response({
                 status: 'fail',
                 message: 'Payload content length greater than maximum allowed: 1000000'
-                // message: response.message
             })
             newResponse.code(response.output.statusCode)
             return newResponse;
