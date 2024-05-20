@@ -33,7 +33,7 @@ async function postPredictHandler(request, h) {
 async function getDataHandler(request, h) {
     const db = new Firestore()
 
-    const predictionCollection = db.collection('prediction')
+    const predictionCollection = db.collection('predictions')
     const snapshot = await predictionCollection.get()
     const history = snapshot.docs.map(doc => {
         const data = doc.data()
