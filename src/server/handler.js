@@ -19,11 +19,11 @@ async function postPredictHandler(request, h) {
         "createdAt": createdAt
     }
 
-    await storeData(id, data)
+    // await storeData(id, data)
 
     const response = h.response({
-        status: 'Success',
-        message: 'Model is predicted succesfully',
+        status: 'success',
+        message: 'Model is predicted successfully',
         data
     })
     response.code(201)
@@ -44,7 +44,7 @@ async function getDataHandler(request, h) {
     })
 
     const response = h.response({
-        status: 'Success',
+        status: 'success',
         message: 'Load data successfully',
         data: history
     })

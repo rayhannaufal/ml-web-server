@@ -7,8 +7,8 @@ const InputError = require('../exceptions/InputError')
 
 const init = async () => {
     const server = Hapi.server({
-        port: 8000,
-        host: '0.0.0.0',
+        port: 3000,
+        host: 'localhost',
         routes: {
             cors: {
                 origin: ['*']
@@ -23,6 +23,7 @@ const init = async () => {
 
     server.ext('onPreResponse', function (request, h) {
         const response = request.response;
+        console.log(response)
  
         if (response instanceof InputError) {
             const newResponse = h.response({
@@ -37,10 +38,10 @@ const init = async () => {
         if (response.isBoom) {
             const newResponse = h.response({
                 status: 'fail',
-                messaeg: 'Payload content length greater than maximum allowed: 1000000'
+                message: 'Payload content length greater than maximum allowed: 1000000'
                 // message: response.message
             })
-            newResponse.code(response.statusCode)
+            newResponse.code(response.output.statusCode)
             return newResponse;
         }
  
