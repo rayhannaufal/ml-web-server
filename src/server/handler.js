@@ -6,20 +6,22 @@ const { Firestore } = require('@google-cloud/firestore')
 async function postPredictHandler(request, h) {
     const { image } = request.payload
     const { model } = request.server.app
-
-    const { label, suggestion } = await predictClassification(model, image)
-
+    console.log(image)
+    // const { label, suggestion } = await predictClassification(model, image)
+    const score = await predictClassification(model, image)
+    
     const id = crypto.randomUUID()
     const createdAt = new Date().toISOString()
 
     const data = {
         "id": id,
-        "result": label,
-        "suggestion": suggestion,
+        "accuration": score,
+        // "result": label,
+        // "suggestion": suggestion,
         "createdAt": createdAt
     }
 
-    await storeData(id, data)
+    // await storeData(id, data)
 
     const response = h.response({
         status: 'success',

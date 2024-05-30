@@ -23,7 +23,7 @@ const init = async () => {
 
     server.ext('onPreResponse', function (request, h) {
         const response = request.response;
-        console.log(response)
+        // console.log(response)
  
         if (response instanceof InputError) {
             const newResponse = h.response({
